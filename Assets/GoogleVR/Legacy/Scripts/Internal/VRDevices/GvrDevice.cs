@@ -180,11 +180,9 @@ namespace Gvr.Internal {
 
 #if UNITY_IOS
     private const string dllName = "__Internal";
-#elif UNITY_HAS_GOOGLEVR
-    private const string dllName = "gvr";
 #else
     private const string dllName = "gvrunity";
-#endif  // UNITY_IOS
+#endif
 
     [DllImport(dllName)]
     private static extern void Start();
