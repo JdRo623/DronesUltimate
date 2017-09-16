@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class SnaiperRifle : MonoBehaviour
 {
     public Transform camera1;// fpc camera
@@ -19,7 +19,7 @@ public class SnaiperRifle : MonoBehaviour
     public float Accuracy = 0.01f;//accuracy of bullets
     public AudioClip Shoot;   // audio
     public AudioClip Reloaded;//
-    public GUIText bulletGUI;// text which shows the current ammo
+    public Text bulletGUI;// text which shows the current ammo
     public int svumode;//animation mode
     private float svureload;
     private float svuAim;

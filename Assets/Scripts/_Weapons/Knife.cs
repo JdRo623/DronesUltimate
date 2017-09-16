@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class Knife : MonoBehaviour
 {
     public GameObject col; // knife collider
@@ -10,7 +10,7 @@ public class Knife : MonoBehaviour
     string _idle_;
     string _shoot_;
 	public AudioClip attack;
-	public GUIText AmmoGUI;// text which shows the current ammo
+	public Text AmmoGUI;// text which shows the current ammo
 
     void Start()
     {

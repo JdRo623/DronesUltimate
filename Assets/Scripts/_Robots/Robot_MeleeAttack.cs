@@ -13,7 +13,7 @@ public class Robot_MeleeAttack : MonoBehaviour {
 			timer += Time.deltaTime;
 			top.transform.Rotate(0, 900 *1.2f* Time.deltaTime ,0);// rotate top 
 			if (timer > 1) {
-				health.player_health -= health.melee_damage;// take health
+				//health.player_health -= health.melee_damage;// take health
 				timer = 0;
 			}
 			

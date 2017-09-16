@@ -1,6 +1,6 @@
 using UnityEngine; 
 using System.Collections;
-
+using UnityEngine.UI;
 public class Flamethrower : MonoBehaviour
 {
 
@@ -15,7 +15,7 @@ public class Flamethrower : MonoBehaviour
     public int curAmmo = 0;// curent ammo
     public int maxAmmo = 12;// max ammo
     public int inventoryAmmo = 24;// ammo in inventory
-    public GUIText bulletGUI;// text which shows the current ammo
+    public Text bulletGUI;// text which shows the current ammo
 
     public AnimationClip _Idle;  //
     public AnimationClip _Reload;// Animations

@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class Submachinegun : MonoBehaviour
 {
     public int lasermode;//animation mode
@@ -20,7 +20,7 @@ public class Submachinegun : MonoBehaviour
     public AudioClip Reloaded;//
     public float Accuracy = 0.01f;//accuracy of bullets
     public Light Light; // light when shoot
-    public GUIText bulletGUI; // text which shows the current ammo
+    public Text bulletGUI; // text which shows the current ammo
     public int damage; // robots damage
 
     public AnimationClip _Idle;    //
