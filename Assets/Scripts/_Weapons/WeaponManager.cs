@@ -34,13 +34,6 @@ public class WeaponManager : MonoBehaviour
 	private int weapon6_mode;
     private int weapon7_mode;
 
-    public GameObject hptexture;  //
-    public GameObject pattexture; //
-    public GameObject grentexture;// ammo,health textures
-    public GameObject hptext;     //
-    public GameObject pattext;    //
-    public GameObject grentext;   //
-
 	public bool have_Gun = false;
 	public bool have_Machine = false;
 	public bool have_Rocket_Launcher = false;
@@ -71,14 +64,7 @@ public class WeaponManager : MonoBehaviour
 		}
 		Null_Weapons();
 		Null_Weapons_mode ();
-        
-
-        pattexture.SetActive(true);  //
-        grentexture.SetActive(true); // 
-        hptexture.SetActive(true);   //
-        hptext.SetActive(true);      // activate all textures
-        pattext.SetActive(true);     //
-        grentext.SetActive(true);    //
+     
 
     }
 

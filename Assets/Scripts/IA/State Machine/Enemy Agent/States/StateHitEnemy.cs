@@ -27,13 +27,15 @@ public class StateHitEnemy : State {
     {
         myHealt = myTransform.GetComponent<EnemyHealth>();
         playerHealt = enemy.GetComponent<Health>();
+       
         //Activar animacion de golpear
         if (myHealt.currentHealth <= 0)
         {
             isDead = true;
         }
-        playerHealt.damage(dano);
+       // playerHealt.damage(dano);
         Debug.Log("Daño");
+        playerHealt.ReciveDamage(dano);
         FinishHit = true;
         currentAnimationTime = (myTransform.gameObject.GetComponent<Animator>()).GetNextAnimatorStateInfo(0).normalizedTime;
         

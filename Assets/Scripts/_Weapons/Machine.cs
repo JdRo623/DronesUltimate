@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections;
-
+using UnityEngine.UI;
 public class Machine : MonoBehaviour
 {
     public Transform camera1;// fpc camera
@@ -18,7 +18,7 @@ public class Machine : MonoBehaviour
     public AudioClip Shoot;   // audio
     public AudioClip Reload_;//
     public float Accuracy = 0.01f;//accuracy of bullets
-    public GUIText bulletGUI;// text which shows the current ammo
+    public Text bulletGUI;// text which shows the current ammo
     public int svumode;//animation mode
     private float svureload;
     public int damage;// robots damage

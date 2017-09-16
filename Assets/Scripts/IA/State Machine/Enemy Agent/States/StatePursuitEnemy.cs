@@ -10,10 +10,12 @@ public class StatePursuitEnemy : State {
     private EnemyHealth myHealt;
     private bool isDead = false;
     private Animator animator;
+    private float distance2Harm = GameHandler.distance2Hit;
 
     public override void OnEntryAction(){
         animator = me.GetComponent<Animator>();
         playWalkingAnimation();
+        distance2Harm = GameHandler.distance2Hit;
     }
 	
 	public override void OnUpdateAction(){
@@ -37,7 +39,8 @@ public class StatePursuitEnemy : State {
 		myTransform.rotation = newRotation;
 	}
     public bool enemyOnAtackZone() {
-        return Vector3.Distance(myTransform.position, enemy.position) <3;
+        Debug.Log("enemy Position: "+ distance2Harm);
+        return Vector3.Distance(myTransform.position, enemy.position) <= distance2Harm;
     }
     public bool ImDead(){
         return isDead;

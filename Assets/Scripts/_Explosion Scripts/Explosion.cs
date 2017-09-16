@@ -26,10 +26,10 @@ public class Explosion : MonoBehaviour
                 }
                 hitColliders[i].GetComponent<Rigidbody>().AddExplosionForce(Force, transform.position, Radius, 0.0F); // push game object
             }
-			 if(hitColliders[i].GetComponent<Health>())// if hit fpc
+			 /*if(hitColliders[i].GetComponent<Health>())// if hit fpc
             {
 			 hitColliders[i].GetComponent<Health>().Del(); // player health - explosion damage 	
-            }
+            }*/
 			
         }
         Destroy(gameObject,0.2f);// destroy explosion

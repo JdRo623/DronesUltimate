@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PickUp : MonoBehaviour {
 	public WeaponManager weapon_manager;// link to GunRemove script
-	public Health health;
+	public PLayerHealt health;
 	public int add_health;
 	public int add_ammo_gun;
 	public int add_ammo_machine;
@@ -75,7 +75,7 @@ public class PickUp : MonoBehaviour {
 
 			
 		if (Col.tag == "Health") {// if collider tag = "health'
-			health.player_health += add_health;
+			health.ReciveHealt(add_health);
 			Destroy (Col.gameObject);
 		}
 	}

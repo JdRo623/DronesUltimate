@@ -61,7 +61,7 @@ public class Robot_Gun : MonoBehaviour {
             {
                 if (Hit.collider.CompareTag("Player"))//If ray hit player
                 {
-					Hit.collider.GetComponent<Health> ().player_health -= Hit.collider.GetComponent<Health> ().bullet_damage;// player health - 5
+					//Hit.collider.GetComponent<Health> ().player_health -= Hit.collider.GetComponent<Health> ().bullet_damage;// player health - 5
                 }
 
                 if (Hit.transform.GetComponent<Rigidbody>())// if ray hit rigidbody object
