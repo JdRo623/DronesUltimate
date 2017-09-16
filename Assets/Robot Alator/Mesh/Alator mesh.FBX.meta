@@ -1,0 +1,190 @@
+fileFormatVersion: 2
+guid: 06a1db74067d9184897a409c3473e820
+timeCreated: 1457530492
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Alator
+    100002: //RootNode
+    100004: Chest
+    100006: Head
+    100008: Hips
+    100010: LArm
+    100012: LBone1
+    100014: LFoot
+    100016: LGun
+    100018: LHand
+    100020: LIndex1
+    100022: LIndex2
+    100024: LIndex3
+    100026: LLittle1
+    100028: LLittle2
+    100030: LLittle3
+    100032: LLowerArm1
+    100034: LLowerArm2
+    100036: LLowerLeg
+    100038: LSholder
+    100040: LThumb1
+    100042: LThumb2
+    100044: LThumb3
+    100046: LToes
+    100048: LUpperArm
+    100050: LUpperLeg
+    100052: LWeapon3
+    100054: LWeapon4
+    100056: Neck
+    100058: RArm
+    100060: RBone1
+    100062: RFoot
+    100064: RGun
+    100066: RHand
+    100068: RIndex1
+    100070: RIndex2
+    100072: RIndex3
+    100074: RLittle1
+    100076: RLittle2
+    100078: RLittle3
+    100080: RLowerArm1
+    100082: RLowerArm2
+    100084: RLowerLeg
+    100086: RSholder
+    100088: RThumb1
+    100090: RThumb2
+    100092: RThumb3
+    100094: RToes
+    100096: RUpperArm
+    100098: RUpperLeg
+    100100: RWeapon3
+    100102: RWeapon4
+    100104: Spine
+    100106: Spine1
+    400000: Alator
+    400002: //RootNode
+    400004: Chest
+    400006: Head
+    400008: Hips
+    400010: LArm
+    400012: LBone1
+    400014: LFoot
+    400016: LGun
+    400018: LHand
+    400020: LIndex1
+    400022: LIndex2
+    400024: LIndex3
+    400026: LLittle1
+    400028: LLittle2
+    400030: LLittle3
+    400032: LLowerArm1
+    400034: LLowerArm2
+    400036: LLowerLeg
+    400038: LSholder
+    400040: LThumb1
+    400042: LThumb2
+    400044: LThumb3
+    400046: LToes
+    400048: LUpperArm
+    400050: LUpperLeg
+    400052: LWeapon3
+    400054: LWeapon4
+    400056: Neck
+    400058: RArm
+    400060: RBone1
+    400062: RFoot
+    400064: RGun
+    400066: RHand
+    400068: RIndex1
+    400070: RIndex2
+    400072: RIndex3
+    400074: RLittle1
+    400076: RLittle2
+    400078: RLittle3
+    400080: RLowerArm1
+    400082: RLowerArm2
+    400084: RLowerLeg
+    400086: RSholder
+    400088: RThumb1
+    400090: RThumb2
+    400092: RThumb3
+    400094: RToes
+    400096: RUpperArm
+    400098: RUpperLeg
+    400100: RWeapon3
+    400102: RWeapon4
+    400104: Spine
+    400106: Spine1
+    4300000: Alator
+    4300002: LArm
+    4300004: RArm
+    4300006: LGun
+    4300008: RGun
+    9500000: //RootNode
+    13700000: Alator
+    13700002: LArm
+    13700004: LGun
+    13700006: RArm
+    13700008: RGun
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleRotations: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 3
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 0
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
