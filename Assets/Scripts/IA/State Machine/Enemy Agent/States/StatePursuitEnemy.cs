@@ -39,7 +39,6 @@ public class StatePursuitEnemy : State {
 		myTransform.rotation = newRotation;
 	}
     public bool enemyOnAtackZone() {
-        Debug.Log("enemy Position: "+ distance2Harm);
         return Vector3.Distance(myTransform.position, enemy.position) <= distance2Harm;
     }
     public bool ImDead(){
