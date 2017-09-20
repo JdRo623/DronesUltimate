@@ -11,7 +11,7 @@ public class EnemySpawnerHandler : MonoBehaviour
     public Transform[] WalkingDroneSpawnPoints;
     public Transform[] spiderDroneSpawnPoints;
     public Transform[] bossesSpawnPoints;
-
+    public Text roundText;
     public int contadorEnemigosInicial;
     public int contadorEnemigosActual;
     public int contadorEnemigosSpawnRonda = 0;
@@ -97,6 +97,7 @@ public class EnemySpawnerHandler : MonoBehaviour
         //  audioSource.clip = starRoundSound;
          // audioSource.Play();
         rondaActual++;
+        roundText.text = rondaActual+"";
         if (rondaActual % rondaAparicionTripod == 0)
             contadorEnemigosTripod = 1;
      //   hudHandler.refreshObjectiveHUD(roundTile + " " + rondaActual + ": " + initTile);
