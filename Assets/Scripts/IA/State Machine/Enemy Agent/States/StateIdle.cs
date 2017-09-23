@@ -16,16 +16,17 @@ public class StateIdle : State
 	}
 	
 	public override void OnUpdateAction(){
-      //  if (myHealt.currentHealth <= 0)
-        //{
-            
-          //  isDead = true;
-        //}
+
+        if (me.GetComponent<EnemyHealth>().currentHealth <= 0)
+        {
+            isDead = true;
+        }
         timer += Time.deltaTime;
         
 	}
 	
 	public override void OnExitAction(){
+        isDead = false;
         timer = 0;
 	}
 	//public bool enemyClose(){
@@ -38,6 +39,5 @@ public class StateIdle : State
     public bool timeIsOver() {
         return timer >= 3;
     }
-
 }
 

@@ -40,13 +40,8 @@ public class ZombieController : MonoBehaviour
 
         Transition pursuit2Hit = new Transition();
         pursuit2Hit.targetState = stateHitEnemy;
-        pursuit2Hit.action = FromHit2WalkingAction;
+        pursuit2Hit.action = FromWalking2HitAction;
         pursuit2Hit.IsTriggered = IsEnable2HitFromPursuit;
-
-        Transition hit2Pursuit = new Transition();
-        hit2Pursuit.targetState = statePursuitEnemy;
-        hit2Pursuit.action = FromWalking2HitAction;
-        hit2Pursuit.IsTriggered = IsEnable2PursuitFromHit;
 
         Transition hit2Death = new Transition();
         hit2Death.targetState = stateDeath;
@@ -65,21 +60,29 @@ public class ZombieController : MonoBehaviour
 
         Transition hit2Idle = new Transition();
         hit2Idle.targetState = stateIdle;
-        hit2Idle.action = ImIdle;
+        hit2Idle.action = FromAtack2IdleAction;
         hit2Idle.IsTriggered = IsEnable2RestFromHit;
 
         Transition idle2Walking = new Transition();
         idle2Walking.targetState = statePursuitEnemy;
-        idle2Walking.action = FromHit2WalkingAction;
+        idle2Walking.action = FromIdle2WalkingAction;
         idle2Walking.IsTriggered = IsEnable2PursuitFromIdle;
+
+        Transition idle2Die= new Transition();
+        idle2Walking.targetState = stateDeath;
+        idle2Walking.action = FromIdle2DeathAction;
+        idle2Walking.IsTriggered = IsEnable2DieFromIdle;
 
         stateDeath.transitions = new Transition[] {death2Pursuit};
         statePursuitEnemy.transitions = new Transition[] { pursuit2Hit, pursuit2Death };
-        stateHitEnemy.transitions = new Transition[] {/* hit2Pursuit,*/ hit2Death, hit2Idle };
-        stateIdle.transitions = new Transition[] {idle2Walking };
+        stateHitEnemy.transitions = new Transition[] {hit2Death, hit2Idle };
+        stateIdle.transitions = new Transition[] {idle2Walking, idle2Die};
     }
     private bool IsEnable2PursuitFromDeath() {
         return stateDeath.IsEnable2PursuitFromDeath();
+    }
+    private bool IsEnable2DieFromIdle() {
+        return stateIdle.ImDead();
     }
     private bool IsEnable2HitFromPursuit() {
         return statePursuitEnemy.enemyOnAtackZone();
@@ -100,31 +103,42 @@ public class ZombieController : MonoBehaviour
         return stateIdle.timeIsOver();
     }
     public void FromWalking2HitAction() {
-      //  animator.SetTrigger("Walking2Hit");
+       animator.SetTrigger("W2A");
+        Debug.Log("Walking2Hit");
+    }
+    public void FromAtack2IdleAction() {
+        animator.SetTrigger("A2I");
         Debug.Log("Walking2Hit");
     }
     public void FromHit2WalkingAction()
     {
-      //  animator.SetTrigger("Hit2Walking");
+        animator.SetTrigger("W2A");
         Debug.Log("Hit2Walking");
+    }
+    public void FromIdle2DeathAction()
+    {
+        animator.SetTrigger("I2D");
+        Debug.Log("idle2Death");
+    }
+    public void FromIdle2WalkingAction()
+    {
+        animator.SetTrigger("A2W");
+        Debug.Log("idle2Walking");
     }
     public void FromWalking2DeathAction()
     {
-    //    animator.SetTrigger("Walking2Death");
+        animator.SetTrigger("W2D");
         Debug.Log("Walking2Death");
     }
     public void FromHit2DeathAction()
     {
-      //  animator.SetTrigger("Hit2Death");
+        animator.SetTrigger("A2D");
         Debug.Log("Hit2Death");
     }
     public void FromDeath2WalkingAction()
     {
-      //  animator.SetTrigger("Death2Walking");
+        animator.SetTrigger("D2W");
         Debug.Log("Death2Wallking");
-    }
-    public void ImIdle() {
-        Debug.Log("i'm idle");
     }
     // Update is called once per frame
     void Update ()

@@ -57,12 +57,12 @@ public class EnemySpawnerHandler : MonoBehaviour
     }
     void Spawn(){
 
-        if (contadorEnemigosTripod !=0)
+  /*      if (contadorEnemigosTripod !=0)
         {
            contadorEnemigosTripod=
            createEnemy(findFurtherSpawnPoint(
            bossesSpawnPoints),1,true);
-        }
+        }*/
       //  else {
             if (contadorEnemigosWalkers != 0)
             {
@@ -98,8 +98,8 @@ public class EnemySpawnerHandler : MonoBehaviour
          // audioSource.Play();
         rondaActual++;
         roundText.text = rondaActual+"";
-        if (rondaActual % rondaAparicionTripod == 0)
-            contadorEnemigosTripod = 1;
+       /* if (rondaActual % rondaAparicionTripod == 0)
+            contadorEnemigosTripod = 1;*/
      //   hudHandler.refreshObjectiveHUD(roundTile + " " + rondaActual + ": " + initTile);
         double k = KGgenerator(contadorEnemigosInicial, 1.2);
         contadorEnemigosWalkers = crecimientoExponencial(contadorEnemigosInicial, k, rondaActual);
