@@ -37,7 +37,7 @@ public class StateIdle : State
         return isDead;
     }
     public bool timeIsOver() {
-        return timer >= 3;
+        return timer >= 1;
     }
 }
 

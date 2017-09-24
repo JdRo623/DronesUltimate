@@ -9,12 +9,9 @@ public class StatePursuitEnemy : State {
 	public Transform myTransform;
     private EnemyHealth myHealt;
     private bool isDead = false;
-    private Animator animator;
     private float distance2Harm = GameHandler.distance2Hit;
 
     public override void OnEntryAction(){
-        animator = me.GetComponent<Animator>();
-        playWalkingAnimation();
         distance2Harm = GameHandler.distance2Hit;
     }
 	
@@ -43,8 +40,5 @@ public class StatePursuitEnemy : State {
     }
     public bool ImDead(){
         return isDead;
-    }
-    private void playWalkingAnimation() {
-        animator.Play("Walk");
     }
 }

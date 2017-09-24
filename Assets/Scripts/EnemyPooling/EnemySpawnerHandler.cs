@@ -56,14 +56,7 @@ public class EnemySpawnerHandler : MonoBehaviour
         }
     }
     void Spawn(){
-
-  /*      if (contadorEnemigosTripod !=0)
-        {
-           contadorEnemigosTripod=
-           createEnemy(findFurtherSpawnPoint(
-           bossesSpawnPoints),1,true);
-        }*/
-      //  else {
+        Debug.Log("CW: "+ contadorEnemigosWalkers + "CE"+ contadorEnemigosSpider);
             if (contadorEnemigosWalkers != 0)
             {
                 contadorEnemigosWalkers=
@@ -77,7 +70,6 @@ public class EnemySpawnerHandler : MonoBehaviour
                 spiderDroneSpawnPoints), contadorEnemigosSpider,false);
             }
 
-      //  }
         timePassed = 0F;
     }
 
@@ -107,6 +99,7 @@ public class EnemySpawnerHandler : MonoBehaviour
         contadorEnemigosSpawnRonda = contadorEnemigosWalkers + contadorEnemigosSpider+contadorEnemigosTripod;
         Debug.Log("ES:" + contadorEnemigosSpider + "EW:" + contadorEnemigosWalkers + "SR:"+ contadorEnemigosSpawnRonda);
         Debug.Log(contadorEnemigosSpawnRonda);
+        timePassed = 0F;
     }
 
     public void OnEnemyDeath()

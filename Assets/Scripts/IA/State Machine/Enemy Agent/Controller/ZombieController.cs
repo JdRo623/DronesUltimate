@@ -19,6 +19,12 @@ public class ZombieController : MonoBehaviour
     private Animator animator;
     // Use this for initialization
 
+    private void OnEnable()
+    {
+        zombieStateMachine = new StateMachine(statePursuitEnemy);
+        zombieStateMachine.states = new State[] { statePursuitEnemy, stateHitEnemy, stateDeath, stateIdle };
+    }
+
     void Start() {
         animator = gameObject.GetComponent<Animator>();
         
@@ -37,6 +43,9 @@ public class ZombieController : MonoBehaviour
         stateHitEnemy.dano = dano;
         //Espacio para las variables de stateDeath 
         stateDeath.me = this.gameObject;
+
+        //Espacio para las variables Idle
+        stateIdle.me = this.gameObject;
 
         Transition pursuit2Hit = new Transition();
         pursuit2Hit.targetState = stateHitEnemy;
@@ -69,9 +78,9 @@ public class ZombieController : MonoBehaviour
         idle2Walking.IsTriggered = IsEnable2PursuitFromIdle;
 
         Transition idle2Die= new Transition();
-        idle2Walking.targetState = stateDeath;
-        idle2Walking.action = FromIdle2DeathAction;
-        idle2Walking.IsTriggered = IsEnable2DieFromIdle;
+        idle2Die.targetState = stateDeath;
+        idle2Die.action = FromIdle2DeathAction;
+        idle2Die.IsTriggered = IsEnable2DieFromIdle;
 
         stateDeath.transitions = new Transition[] {death2Pursuit};
         statePursuitEnemy.transitions = new Transition[] { pursuit2Hit, pursuit2Death };
@@ -122,7 +131,7 @@ public class ZombieController : MonoBehaviour
     }
     public void FromIdle2WalkingAction()
     {
-        animator.SetTrigger("A2W");
+        animator.SetTrigger("I2W");
         Debug.Log("idle2Walking");
     }
     public void FromWalking2DeathAction()
