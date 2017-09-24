@@ -184,7 +184,7 @@ public class Gun : MonoBehaviour
             svumode = 4;// animation mode
 			camera1.GetComponent<MouseLook> ().sensitivityX = 10;//sensitivity change
 			camera1.GetComponent<MouseLook> ().sensitivityY = 10;//sensitivity change
-			GameObject.FindWithTag ("Player").GetComponent<MouseLook>().sensitivityX=15;//sensitivity change
+			//GameObject.FindWithTag ("Player").GetComponent<MouseLook>().sensitivityX=15;//sensitivity change
         }
     }
 

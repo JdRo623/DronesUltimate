@@ -17,10 +17,9 @@ public class EnemyHealth : MonoBehaviour
     CharacterController enemy;
     private Vector3 movementVector;
     private float gravity = 40;
-    public ParticleSystem hitParticles;
     public int firedamage;
     public int knifedamage;
-
+    private ParticleSystem blood;
     void OnEnable() {
         isDead = false;
         currentHealth = startingHealth;
@@ -28,6 +27,7 @@ public class EnemyHealth : MonoBehaviour
     void Awake(){
 		animator = GetComponent <Animator> ();
         audioSource = GetComponent<AudioSource>();
+        blood = GetComponent<ParticleSystem>();
        // hitParticles = GetComponent<ParticleSystem>();
         //Declaracion observers
         try {
@@ -42,8 +42,8 @@ public class EnemyHealth : MonoBehaviour
 	public void TakeDamage (int amount)
 	{
 		currentHealth -= amount;
-        //hitParticles.transform.position = hitPoint;
-       // hitParticles.Play();
+       // hitParticles.transform.position = hitPoint;
+        blood.Play();
 		if(currentHealth <= 0)
 		{
 			Death ();
@@ -52,6 +52,7 @@ public class EnemyHealth : MonoBehaviour
 	void Death ()
 	{
         if (!isDead) {
+            blood.Stop();
             OnEnemyDeath();
         }
         isDead = true;
