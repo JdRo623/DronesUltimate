@@ -1,10 +1,9 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using NPBehave;
 using UnityEngine;
 
 public class SoilderBT : MonoBehaviour {
 
-    
+    private Root behavourTree;
 	// Use this for initialization
 	void Start () {
 		

@@ -4,7 +4,7 @@ using System.Collections;
 public class Transition
 {
 
-	public Action action{get; set;}
+	public SMAction action{get; set;}
 
 	public State targetState{get; set;}
 

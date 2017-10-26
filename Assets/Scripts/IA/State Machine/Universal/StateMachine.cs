@@ -11,8 +11,8 @@ public class StateMachine
 		initialState= initState;
 		currentState = initState;
 	}
-	public Action Update(){
-		Action actions =null;
+	public SMAction Update(){
+		SMAction actions =null;
 		Transition triggeredTransition = null;
 
 		foreach(Transition transition in currentState.transitions){
@@ -35,4 +35,4 @@ public class StateMachine
 		return actions;
 	}
 }
-public delegate void Action();
+public delegate void SMAction();

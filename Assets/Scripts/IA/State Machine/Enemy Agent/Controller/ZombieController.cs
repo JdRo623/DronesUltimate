@@ -152,7 +152,7 @@ public class ZombieController : MonoBehaviour
     // Update is called once per frame
     void Update ()
 	{
-		Action actions = zombieStateMachine.Update();
+		SMAction actions = zombieStateMachine.Update();
 		actions();
 	}
 }
