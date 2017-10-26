@@ -10,13 +10,14 @@ public class SoilderBT : MonoBehaviour {
     private Root behavourTree;
     private Animator animator;
     public float dano;
-    private Health playerHealt;
+    public float speed;
+    private PLayerHealt playerHealt;
     private float timePassed;
     // Use this for initialization
     void Start() {
         navigation = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
-        playerHealt = GetComponent<Health>();
+        playerHealt = GetComponent<PLayerHealt>();
         characterHealth = GetComponent<EnemyHealth>();
         behavourTree = new Root(
             //First
@@ -25,14 +26,12 @@ public class SoilderBT : MonoBehaviour {
                 new BlackboardCondition("characterHealth", Operator.IS_SMALLER_OR_EQUAL, 0, Stops.IMMEDIATE_RESTART,
                 new Sequence(
                      new Action(() => PlayDeadAnimaton()),
-                    new Action(() => KillCharacter()),
-                    new Action(()=>KillCharacter2())
-                   
+                    new Action(() => DeactivateCharacter())
                     )),
             //Second leaf
             new Service(0, CheckPlayerDistance,
             new Selector(
-                new BlackboardCondition("playerDistance", Operator.IS_SMALLER, 3, Stops.IMMEDIATE_RESTART,
+                new BlackboardCondition("playerDistance", Operator.IS_SMALLER, 5f, Stops.IMMEDIATE_RESTART,
                 new Sequence(
                     new Action(() => PlayHitAnimation()),
                     new Action(() => MakeHarmToEnemy()),
@@ -53,7 +52,7 @@ public class SoilderBT : MonoBehaviour {
             //Third leaf
             new Service(0, CheckPlayerDistance,
             new Selector(
-                new BlackboardCondition("playerDistance", Operator.IS_GREATER_OR_EQUAL, 3, Stops.IMMEDIATE_RESTART,
+                new BlackboardCondition("playerDistance", Operator.IS_GREATER_OR_EQUAL, 5f, Stops.IMMEDIATE_RESTART,
                 new Sequence(
                     new Action(() => PlayRunAnimation()),
                     new Action(() => PursuitEnemy())
@@ -73,14 +72,6 @@ public class SoilderBT : MonoBehaviour {
 
     //Actions
 
-    private void KillCharacter() {
-        Debug.Log("Killed Character");
-    }
-    private void KillCharacter2()
-    {
-        Debug.Log("Killed Character 2");
-    }
-
     private void PlayDeadAnimaton() {
         animator.SetTrigger("ToDie");
     }
@@ -94,6 +85,7 @@ public class SoilderBT : MonoBehaviour {
         animator.SetTrigger("ToWalk");
     }
     private void DeactivateCharacter() {
+        Debug.Log("Deactivate Character");
         this.gameObject.SetActive(false);
     }
     private void MakeHarmToEnemy() {
@@ -112,7 +104,7 @@ public class SoilderBT : MonoBehaviour {
         behavourTree.Blackboard["characterHealth"] = characterHealth.currentHealth;
     }
     private void CheckPlayerDistance() {
-        behavourTree.Blackboard["playerDistance"] = Vector3.Distance(this.gameObject.transform.position, player.transform.position);
+              behavourTree.Blackboard["playerDistance"] = Vector3.Distance(this.gameObject.transform.position, player.transform.position);
     }
 }
 

@@ -31,7 +31,7 @@ public class EnemyHealth : MonoBehaviour
        // hitParticles = GetComponent<ParticleSystem>();
         //Declaracion observers
         try {
-            EnemySpawnerHandler enemySpawnerHandler = FindObjectOfType<EnemySpawnerHandler>();
+            BTEnemySpawnerHandler enemySpawnerHandler = FindObjectOfType<BTEnemySpawnerHandler>();
             OnEnemyDeath = enemySpawnerHandler.OnEnemyDeath;
         }
         catch (Exception e) {      
