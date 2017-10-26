@@ -20,7 +20,6 @@ public class StatePursuitEnemy : State {
         {
             isDead = true;
         }
-
         UnityEngine.AI.NavMeshAgent nav = me.GetComponent<UnityEngine.AI.NavMeshAgent>();
         nav.SetDestination(enemy.position);
 	}

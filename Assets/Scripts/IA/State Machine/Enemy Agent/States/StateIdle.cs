@@ -29,9 +29,6 @@ public class StateIdle : State
         isDead = false;
         timer = 0;
 	}
-	//public bool enemyClose(){
-	//	return Vector3.Distance (myTransform.position, enemy.position) < 1;
-	//}
     public bool ImDead() {
         
         return isDead;
