@@ -59,8 +59,7 @@ public class BTEnemySpawnerHandler : MonoBehaviour {
         }
     }
     void Spawn()
-    {
-        Debug.Log("CW: " + contadorEnemigosWalkers + "CE" + contadorEnemigosSpider);
+    {   
         if (contadorEnemigosWalkers != 0)
         {
             contadorEnemigosWalkers =
@@ -105,8 +104,6 @@ public class BTEnemySpawnerHandler : MonoBehaviour {
         contadorEnemigosWalkers = crecimientoExponencial(contadorEnemigosInicial, k, rondaActual);
         contadorEnemigosSpider = contadorEnemigosWalkers * 2;
         contadorEnemigosSpawnRonda = contadorEnemigosWalkers + contadorEnemigosSpider + contadorEnemigosTripod;
-        Debug.Log("ES:" + contadorEnemigosSpider + "EW:" + contadorEnemigosWalkers + "SR:" + contadorEnemigosSpawnRonda);
-        Debug.Log(contadorEnemigosSpawnRonda);
         timePassed = 0F;
     }
 
