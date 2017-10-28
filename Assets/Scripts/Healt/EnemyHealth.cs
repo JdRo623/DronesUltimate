@@ -12,14 +12,17 @@ public class EnemyHealth : MonoBehaviour
 	Animator animator;                              
 	CapsuleCollider capsuleCollider;          
 	public bool isDead;
+    public bool isStateMachines;
     AudioSource audioSource;
     public GameObject render;
+    
     CharacterController enemy;
     private Vector3 movementVector;
     private float gravity = 40;
     public int firedamage;
     public int knifedamage;
     private ParticleSystem blood;
+
     void OnEnable() {
         isDead = false;
         currentHealth = startingHealth;
@@ -31,8 +34,18 @@ public class EnemyHealth : MonoBehaviour
        // hitParticles = GetComponent<ParticleSystem>();
         //Declaracion observers
         try {
-            BTEnemySpawnerHandler enemySpawnerHandler = FindObjectOfType<BTEnemySpawnerHandler>();
-            OnEnemyDeath = enemySpawnerHandler.OnEnemyDeath;
+            //Change make this an option
+            if (isStateMachines)
+            {
+                EnemySpawnerHandler enemySpawnerHandler = FindObjectOfType<EnemySpawnerHandler>();
+                OnEnemyDeath = enemySpawnerHandler.OnEnemyDeath;
+            }
+            else {
+                BTEnemySpawnerHandler enemySpawnerHandler = FindObjectOfType<BTEnemySpawnerHandler>();
+                OnEnemyDeath = enemySpawnerHandler.OnEnemyDeath;
+            }
+            
+           
         }
         catch (Exception e) {      
             Debug.Log("controlado");

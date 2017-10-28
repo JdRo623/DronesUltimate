@@ -14,6 +14,7 @@ public class SoilderBT : MonoBehaviour
     public float speed;
     private PLayerHealt playerHealt;
     private float timePassed;
+    private float timeHitPassed;
     // Use this for initialization
     void Start()
     {
@@ -22,16 +23,32 @@ public class SoilderBT : MonoBehaviour
         playerHealt = player.GetComponent<PLayerHealt>();
         characterHealth = GetComponent<EnemyHealth>();
         animator.Play("Walking");
+        behavourTree = InitRoot();
+        behavourTree.Start();
+        timePassed = 0;
+        timeHitPassed = 0;
+    }
+    private void OnEnable()
+    {
+        timePassed = 0;
+        timeHitPassed = 0;
+    }
 
-        behavourTree = new Root(
+    //Tree
+
+    //Actions
+
+    private Root InitRoot() {
+        return new Root(
             //First
             new Service(0, CheckCharacterHealth,
             new Selector(
                 new BlackboardCondition("characterHealth", Operator.IS_SMALLER_OR_EQUAL, 0, Stops.IMMEDIATE_RESTART,
                 new Sequence(
                      new Action(() => PlayDeadAnimaton()),
-                     new Action((bool shouldCancel) => {
-                         if (timePassed < 5)
+                     new Action((bool _shouldCancel) =>
+                     {
+                         if (!_shouldCancel)
                          {
                              SinkCharacter();
                              return Action.Result.PROGRESS;
@@ -39,38 +56,24 @@ public class SoilderBT : MonoBehaviour
                          else
                          {
                              DeactivateCharacter();
-                             timePassed = 0;
                              return Action.Result.FAILED;
                          }
-                     }),
-                     new WaitUntilStopped())),
+                     })
+                     )),
             //Second leaf
             new Service(0, CheckPlayerDistance,
             new Selector(
-                new BlackboardCondition("playerDistance", Operator.IS_SMALLER_OR_EQUAL, 5f, Stops.IMMEDIATE_RESTART,
+                new BlackboardCondition("playerDistance", Operator.IS_SMALLER_OR_EQUAL, 5f, Stops.LOWER_PRIORITY_IMMEDIATE_RESTART,
                 new Sequence(
                     new Action(() => PlayHitAnimation()),
                     new Action(() => MakeHarmToEnemy()),
-                    new Action(() => PlayIdleAnimation()),
-                    new Action((bool shouldCancel) =>
-                    {
-                        if (timePassed < 1.5)
-                        {
-                            Rest();
-                            return Action.Result.PROGRESS;
-                        }
-                        else
-                        {
-                            timePassed = 0;
-                            return Action.Result.FAILED;
-                        }
-                    })
+                    new Action(() => PlayIdleAnimation())         
 
                 )),
             //Third leaf
             new Service(0, CheckPlayerDistance,
             new Selector(
-                new BlackboardCondition("playerDistance", Operator.IS_GREATER_OR_EQUAL, 5f, Stops.IMMEDIATE_RESTART,
+                new BlackboardCondition("playerDistance", Operator.IS_GREATER_OR_EQUAL, 5f, Stops.LOWER_PRIORITY,
                 new Sequence(
                     new Action(() => PlayRunAnimation()),
                     new Action(() => PursuitEnemy())
@@ -79,15 +82,7 @@ public class SoilderBT : MonoBehaviour
                     )
             )
            )));
-
-        behavourTree.Start();
     }
-
-
-    //Tree
-    
-    //Actions
-
     private void PlayDeadAnimaton()
     {
         animator.SetTrigger("ToDie");
@@ -99,6 +94,9 @@ public class SoilderBT : MonoBehaviour
         (GetComponent<UnityEngine.AI.NavMeshAgent>()).enabled = false;
         (GetComponent<BoxCollider>()).enabled = false;
         (GetComponent<CharacterController>()).enabled = false;
+        if (timePassed >=5) {
+            characterHealth.currentHealth = characterHealth.startingHealth;
+        }
     }
 
     private void PlayIdleAnimation()
@@ -123,14 +121,23 @@ public class SoilderBT : MonoBehaviour
     }
     private void MakeHarmToEnemy()
     {
-        playerHealt.ReciveDamage(dano);
-    }
-    private void Rest()
-    {
-        timePassed = Time.deltaTime;
+        if (float.Equals(timeHitPassed, 0f))
+        {
+            playerHealt.ReciveDamage(dano);
+            timeHitPassed += Time.deltaTime;
+        }
+        else {
+            timeHitPassed += Time.deltaTime;
+            if (float.Equals(timeHitPassed, 1f)) {
+                timeHitPassed = 0f;
+            }
+        }
+        
     }
     private void PursuitEnemy()
     {
+        timeHitPassed = 0;
+        if (navigation.isOnNavMesh)
         navigation.SetDestination(player.transform.position);
     }
     //Variables
