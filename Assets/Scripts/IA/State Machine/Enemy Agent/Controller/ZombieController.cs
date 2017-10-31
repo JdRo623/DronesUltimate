@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Diagnostics;
 using System.Collections;
 
 public class ZombieController : MonoBehaviour
@@ -17,6 +18,7 @@ public class ZombieController : MonoBehaviour
     private StateHitEnemy stateHitEnemy = new StateHitEnemy();
     private StateIdle stateIdle = new StateIdle();
     private Animator animator;
+    Stopwatch stopwatch;
     // Use this for initialization
 
     private void OnEnable()
@@ -27,7 +29,7 @@ public class ZombieController : MonoBehaviour
 
     void Start() {
         animator = gameObject.GetComponent<Animator>();
-        
+        stopwatch = new Stopwatch();
         statePursuitEnemy.myTransform = transform;
         statePursuitEnemy.me = this.gameObject;
         statePursuitEnemy.enemy = player.transform;
@@ -86,6 +88,8 @@ public class ZombieController : MonoBehaviour
         statePursuitEnemy.transitions = new Transition[] { pursuit2Hit, pursuit2Death };
         stateHitEnemy.transitions = new Transition[] {hit2Death, hit2Idle };
         stateIdle.transitions = new Transition[] {idle2Walking, idle2Die};
+
+        stopwatch.Start();
     }
     private bool IsEnable2PursuitFromDeath() {
         return stateDeath.IsEnable2PursuitFromDeath();
@@ -113,41 +117,39 @@ public class ZombieController : MonoBehaviour
     }
     public void FromWalking2HitAction() {
        animator.SetTrigger("W2A");
-        Debug.Log("Walking2Hit");
     }
     public void FromAtack2IdleAction() {
         animator.SetTrigger("A2I");
-        Debug.Log("Walking2Hit");
     }
     public void FromHit2WalkingAction()
     {
         animator.SetTrigger("W2A");
-        Debug.Log("Hit2Walking");
     }
     public void FromIdle2DeathAction()
     {
+        stopwatch.Stop();
+        UnityEngine.Debug.Log("Time Elapsed SM: " + stopwatch.Elapsed);
         animator.SetTrigger("I2D");
-        Debug.Log("idle2Death");
     }
     public void FromIdle2WalkingAction()
     {
         animator.SetTrigger("I2W");
-        Debug.Log("idle2Walking");
     }
     public void FromWalking2DeathAction()
     {
+        stopwatch.Stop();
+        UnityEngine.Debug.Log("Time Elapsed SM: " + stopwatch.Elapsed);
         animator.SetTrigger("W2D");
-        Debug.Log("Walking2Death");
     }
     public void FromHit2DeathAction()
     {
+        stopwatch.Stop();
+        UnityEngine.Debug.Log("Time Elapsed SM: " + stopwatch.Elapsed);
         animator.SetTrigger("A2D");
-        Debug.Log("Hit2Death");
     }
     public void FromDeath2WalkingAction()
     {
         animator.SetTrigger("D2W");
-        Debug.Log("Death2Wallking");
     }
     // Update is called once per frame
     void Update ()

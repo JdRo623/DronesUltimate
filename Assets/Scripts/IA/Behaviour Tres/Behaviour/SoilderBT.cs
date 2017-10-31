@@ -72,7 +72,6 @@ public class SoilderBT : MonoBehaviour
                     new Action(() => PlayHitAnimation()),
                     new Action(() => MakeHarmToEnemy()),
                     new Action(() => PlayIdleAnimation())         
-
                 )),
             //Third leaf
             new Service(0, CheckPlayerDistance,
@@ -90,7 +89,7 @@ public class SoilderBT : MonoBehaviour
     private void PlayDeadAnimaton()
     {
         stopwatch.Stop();
-        UnityEngine.Debug.Log("Time Elapsed: "+stopwatch.Elapsed);
+        UnityEngine.Debug.Log("Time Elapsed BT: "+stopwatch.Elapsed);
         animator.SetTrigger("ToDie");
     }
     private void SinkCharacter()
