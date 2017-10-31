@@ -1,4 +1,5 @@
 ﻿using NPBehave;
+using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -15,15 +16,18 @@ public class SoilderBT : MonoBehaviour
     private PLayerHealt playerHealt;
     private float timePassed;
     private float timeHitPassed;
+    Stopwatch stopwatch;
     // Use this for initialization
     void Start()
     {
+        stopwatch = new Stopwatch();
         navigation = GetComponent<NavMeshAgent>();
         animator = GetComponent<Animator>();
         playerHealt = player.GetComponent<PLayerHealt>();
         characterHealth = GetComponent<EnemyHealth>();
         animator.Play("Walking");
         behavourTree = InitRoot();
+        stopwatch.Start();
         behavourTree.Start();
         timePassed = 0;
         timeHitPassed = 0;
@@ -73,7 +77,7 @@ public class SoilderBT : MonoBehaviour
             //Third leaf
             new Service(0, CheckPlayerDistance,
             new Selector(
-                new BlackboardCondition("playerDistance", Operator.IS_GREATER_OR_EQUAL, 5f, Stops.LOWER_PRIORITY,
+                new BlackboardCondition("playerDistance", Operator.IS_GREATER_OR_EQUAL, 5f, Stops.IMMEDIATE_RESTART,
                 new Sequence(
                     new Action(() => PlayRunAnimation()),
                     new Action(() => PursuitEnemy())
@@ -85,6 +89,8 @@ public class SoilderBT : MonoBehaviour
     }
     private void PlayDeadAnimaton()
     {
+        stopwatch.Stop();
+        UnityEngine.Debug.Log("Time Elapsed: "+stopwatch.Elapsed);
         animator.SetTrigger("ToDie");
     }
     private void SinkCharacter()

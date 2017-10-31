@@ -15,7 +15,7 @@ public class EnemyHealth : MonoBehaviour
     public bool isStateMachines;
     AudioSource audioSource;
     public GameObject render;
-    
+    public bool onTesting;
     CharacterController enemy;
     private Vector3 movementVector;
     private float gravity = 40;
@@ -48,7 +48,6 @@ public class EnemyHealth : MonoBehaviour
            
         }
         catch (Exception e) {      
-            Debug.Log("controlado");
         }
         
     }
@@ -66,7 +65,11 @@ public class EnemyHealth : MonoBehaviour
 	{
         if (!isDead) {
             blood.Stop();
-            OnEnemyDeath();
+            if (!onTesting)
+            {
+                OnEnemyDeath();
+            }
+           
         }
         isDead = true;
     }
