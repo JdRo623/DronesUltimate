@@ -37,11 +37,8 @@ public class BehaviorTreeEnemyHandler : MonoBehaviour
         timePassed = 0;
         timeHitPassed = 0;
     }
-
     //Tree
-
     //Actions
-
     private Root InitRoot() {
         return new Root(
             //First
@@ -145,7 +142,6 @@ public class BehaviorTreeEnemyHandler : MonoBehaviour
         if (navigation.isOnNavMesh)
         navigation.SetDestination(player.transform.position);
     }
-    //Variables
 
     private void CheckCharacterHealth()
     {
