@@ -3,7 +3,7 @@ using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class SoilderBT : MonoBehaviour
+public class BehaviorTreeEnemyHandler : MonoBehaviour
 {
     private Vector3 playerPosition;
     public GameObject player;

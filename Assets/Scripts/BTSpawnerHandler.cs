@@ -14,7 +14,7 @@ public class BTSpawnerHandler : MonoBehaviour {
         {
             obj.transform.position = this.transform.position;
             obj.transform.rotation = this.transform.rotation;
-            obj.GetComponent<SoilderBT>().player = player;
+            obj.GetComponent<BehaviorTreeEnemyHandler>().player = player;
             obj.GetComponent<EnemyHealth>().isDead = false;
             obj.SetActive(true);
             numberOfEnemys2Spawn--;

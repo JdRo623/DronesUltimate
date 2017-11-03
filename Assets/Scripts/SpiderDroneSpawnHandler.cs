@@ -14,7 +14,7 @@ public class SpiderDroneSpawnHandler : MonoBehaviour {
         {
             obj.transform.position = this.transform.position;
             obj.transform.rotation = this.transform.rotation;
-            obj.GetComponent<ZombieController>().player = player;
+            obj.GetComponent<StateMachineEnemyHandler>().player = player;
             obj.GetComponent<EnemyHealth>().isDead = false;
             obj.SetActive(true);
             numberOfEnemys2Spawn--;

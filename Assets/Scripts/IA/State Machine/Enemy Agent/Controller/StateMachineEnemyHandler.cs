@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Diagnostics;
 using System.Collections;
 
-public class ZombieController : MonoBehaviour
+public class StateMachineEnemyHandler : MonoBehaviour
 {
     private StateMachine zombieStateMachine;
 

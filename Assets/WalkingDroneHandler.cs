@@ -42,7 +42,7 @@ public class WalkingDroneHandler : MonoBehaviour {
         GameObject obj = walkingDronePool.GetPulledObject();
         if (obj != null)
         {
-            obj.GetComponent<ZombieController>().player = player;
+            obj.GetComponent<StateMachineEnemyHandler>().player = player;
             obj.transform.position = this.transform.position;
             obj.transform.rotation = this.transform.rotation;
             obj.GetComponent<EnemyHealth>().currentHealth = lifeOfEnemy;
