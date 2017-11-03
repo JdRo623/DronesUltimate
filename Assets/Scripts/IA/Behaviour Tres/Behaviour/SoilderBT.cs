@@ -37,11 +37,8 @@ public class SoilderBT : MonoBehaviour
         timePassed = 0;
         timeHitPassed = 0;
     }
-
     //Tree
-
     //Actions
-
     private Root InitRoot() {
         return new Root(
             //First
@@ -145,7 +142,6 @@ public class SoilderBT : MonoBehaviour
         if (navigation.isOnNavMesh)
         navigation.SetDestination(player.transform.position);
     }
-    //Variables
 
     private void CheckCharacterHealth()
     {

@@ -6,20 +6,16 @@ public class ZombieController : MonoBehaviour
 {
     private StateMachine zombieStateMachine;
 
-    //Jugador
     public GameObject player;
-    //Atributos
     public float speed;
     public float dano;
     public Transform[] goals;
-    //Estados
     private StatePursuitEnemy statePursuitEnemy = new StatePursuitEnemy();
     private StateDeath stateDeath = new StateDeath();
     private StateHitEnemy stateHitEnemy = new StateHitEnemy();
     private StateIdle stateIdle = new StateIdle();
     private Animator animator;
     Stopwatch stopwatch;
-    // Use this for initialization
 
     private void OnEnable()
     {
@@ -158,4 +154,3 @@ public class ZombieController : MonoBehaviour
 		actions();
 	}
 }
-
