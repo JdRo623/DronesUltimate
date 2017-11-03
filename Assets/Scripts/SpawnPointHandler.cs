@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpiderDroneSpawnHandler : MonoBehaviour {
+public class SpawnPointHandler : MonoBehaviour {
 
     // Use this for initialization
     public EnemyPoolScript spiderDronePool;

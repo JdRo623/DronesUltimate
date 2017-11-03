@@ -74,13 +74,13 @@ public class EnemySpawnerHandler : MonoBehaviour
     }
 
     private int createEnemy(Transform spawnPoint, int numberOfEnemies2Spawn, bool boss){
-        return spawnPoint.gameObject.GetComponent<SpiderDroneSpawnHandler>().createEnemy(numberOfEnemies2Spawn,boss);
+        return spawnPoint.gameObject.GetComponent<SpawnPointHandler>().createEnemy(numberOfEnemies2Spawn,boss);
     }
     double KGgenerator(double valorInicial, double seed){
         double m1 = (double)valorInicial * seed;
         return (double)Mathf.Log((float)(m1 / valorInicial));
     }
-    int crecimientoExponencial(double valorInicial, double k, int rondaActual){
+    int CalculateNumberOfEnemies(double valorInicial, double k, int rondaActual){
         double valorActual = valorInicial * (Mathf.Exp((float)(k * rondaActual)));
         return (int)(valorActual);
     }
@@ -94,7 +94,7 @@ public class EnemySpawnerHandler : MonoBehaviour
             contadorEnemigosTripod = 1;*/
      //   hudHandler.refreshObjectiveHUD(roundTile + " " + rondaActual + ": " + initTile);
         double k = KGgenerator(contadorEnemigosInicial, 1.2);
-        contadorEnemigosWalkers = crecimientoExponencial(contadorEnemigosInicial, k, rondaActual);
+        contadorEnemigosWalkers = CalculateNumberOfEnemies(contadorEnemigosInicial, k, rondaActual);
         contadorEnemigosSpider = contadorEnemigosWalkers * 2;
         contadorEnemigosSpawnRonda = contadorEnemigosWalkers + contadorEnemigosSpider+contadorEnemigosTripod;
         Debug.Log("ES:" + contadorEnemigosSpider + "EW:" + contadorEnemigosWalkers + "SR:"+ contadorEnemigosSpawnRonda);
